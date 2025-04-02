@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:1337/api';
-
 export interface Product {
   id: number;
   name: string;
@@ -36,7 +34,7 @@ export interface ProductImageFormat {
 
 export const getProducts = async (): Promise<Product[]> => {
   try {
-    const response = await axios.get(`${API_URL}/products?populate=*`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/products?populate=*`);
     return response.data.data;
   } catch (error) {
     return [];
