@@ -11,16 +11,34 @@ export interface Product {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  images?: ProductImage[];
+}
+
+export interface ProductImage {
+  id: number;
+  documentId: string;
+  formats: {
+    thumbnail: ProductImageFormat;
+    large: ProductImageFormat;
+    small: ProductImageFormat;
+    medium: ProductImageFormat;
+  };
+}
+
+export interface ProductImageFormat {
+  name: string;
+  ext: string;
+  width: number;
+  height: number;
+  size: number;
+  url: string;
 }
 
 export const getProducts = async (): Promise<Product[]> => {
   try {
-    console.log('Fetching products from:', `${API_URL}/products`);
-    const response = await axios.get(`${API_URL}/products`);
-    console.log('API Response:', response.data);
+    const response = await axios.get(`${API_URL}/products?populate=*`);
     return response.data.data;
   } catch (error) {
-    console.error('Error fetching products:', error);
     return [];
   }
 };
