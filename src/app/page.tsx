@@ -2,37 +2,19 @@ import Link from 'next/link'
 import ImageSlider from '@/components/ImageSlider'
 
 export default function Home() {
-  const heroImages = [
-    {
-      src: '/images/hero1.jpg',
-      alt: 'Modern office space',
-    },
-    {
-      src: '/images/hero2.jpg',
-      alt: 'Team collaboration',
-    },
-    {
-      src: '/images/hero3.jpg',
-      alt: 'Innovative technology',
-    },
-  ]
-
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative">
-        <ImageSlider images={heroImages} />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-secondary/80">
-          <div className="container mx-auto px-4 h-full flex flex-col justify-center">
-            <h1 className="text-5xl font-bold mb-6 text-white">Welcome to Our Company</h1>
-            <p className="text-xl mb-8 text-white">We create innovative solutions for modern businesses</p>
-            <Link
-              href="/products"
-              className="bg-white text-primary px-8 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all w-fit"
-            >
-              Explore Our Products
-            </Link>
-          </div>
+      <section className="bg-gradient-to-r from-primary to-secondary text-white py-20">
+        <div className="container mx-auto px-4">
+          <h1 className="text-5xl font-bold mb-6">Welcome to Our Company</h1>
+          <p className="text-xl mb-8">We create innovative solutions for modern businesses</p>
+          <Link
+            href="/products"
+            className="bg-white text-primary px-8 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all"
+          >
+            Explore Our Products
+          </Link>
         </div>
       </section>
 
