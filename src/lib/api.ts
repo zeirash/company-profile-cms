@@ -1,5 +1,9 @@
 import axios from 'axios';
 
+const api = axios.create({
+  baseURL: 'https://company-profile-cms-backend.onrender.com',
+});
+
 export interface Product {
   id: number;
   name: string;
@@ -34,7 +38,7 @@ export interface ProductImageFormat {
 
 export const getProducts = async (): Promise<Product[]> => {
   try {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/products?populate=*`);
+    const response = await api.get('/api/products?populate=*');
     return response.data.data;
   } catch (error) {
     console.error('Error fetching products:', error);

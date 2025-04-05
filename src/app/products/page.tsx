@@ -1,13 +1,15 @@
 import { getProducts } from '@/lib/api';
-import Image from 'next/image';
+// import Image from 'next/image';
 import ImageSlider from '@/components/ImageSlider';
 
 export default async function Products() {
   console.log('Products page rendering...');
   const products = await getProducts();
   console.log('Products fetched:', products);
+  console.log('process.env.NEXT_PUBLIC_STRAPI_API_URL:', process.env.NEXT_PUBLIC_STRAPI_API_URL);
 
   const isProduction = process.env.NODE_ENV === 'production';
+  console.log('isProduction:', isProduction);
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -22,10 +24,8 @@ export default async function Products() {
               {product.images && product.images.length > 0 ? (
                 <ImageSlider
                   images={product.images.map((image) => ({
-                    src: isProduction
-                      ? image.formats.medium.url
-                      : `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${image.formats.medium.url}`,
-                    alt: image.formats.medium.name || product.name,
+                    src: image.formats.medium.url,
+                    alt: product.name,
                   }))}
                 />
               ) : (
