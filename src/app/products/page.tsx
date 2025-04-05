@@ -2,7 +2,15 @@ import { getProducts } from '@/lib/api';
 // import Image from 'next/image';
 import ImageSlider from '@/components/ImageSlider';
 
+// Force dynamic rendering - page will be rendered at request time
+export const dynamic = 'force-dynamic';
+// Disable static generation
+export const revalidate = 0;
+
 export default async function Products() {
+  // Log the request time to verify dynamic rendering
+  console.log('Fetching products at:', new Date().toISOString());
+
   const products = await getProducts();
   console.log('Products fetched:', products);
   console.log('process.env.NEXT_PUBLIC_STRAPI_API_URL:', process.env.NEXT_PUBLIC_STRAPI_API_URL);
