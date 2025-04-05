@@ -3,10 +3,11 @@ import { getProducts } from '@/lib/api';
 import ImageSlider from '@/components/ImageSlider';
 
 export default async function Products() {
-  console.log('Products page rendering...');
   const products = await getProducts();
   console.log('Products fetched:', products);
   console.log('process.env.NEXT_PUBLIC_STRAPI_API_URL:', process.env.NEXT_PUBLIC_STRAPI_API_URL);
+
+  console.log('process.env.APP_ENV:', process.env.APP_ENV);
 
   const isProduction = process.env.NODE_ENV === 'production';
   console.log('isProduction:', isProduction);
