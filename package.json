@@ -4,8 +4,10 @@
   "description": "A modern company profile website with CMS capabilities",
   "scripts": {
     "dev": "next dev",
+    "dev:local": "NODE_ENV=development next dev",
+    "dev:production": "NODE_ENV=production next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "lint": "next lint"
   },
   "keywords": [
@@ -32,5 +34,8 @@
     "swiper": "^11.2.6",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.1532.0"
   }
 }

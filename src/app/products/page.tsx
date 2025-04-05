@@ -7,6 +7,8 @@ export default async function Products() {
   const products = await getProducts();
   console.log('Products fetched:', products);
 
+  const isProduction = process.env.NODE_ENV === 'production';
+
   return (
     <div className="container mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold text-center mb-12">Our Products</h1>
@@ -14,13 +16,15 @@ export default async function Products() {
         {products.map((product) => (
           <div
             key={product.id}
-            className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow max-w-[280px] mx-auto w-full"
+            className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow max-w-[240px] mx-auto w-full"
           >
-            <div className="relative w-full h-[240px]">
+            <div className="relative w-full h-[180px]">
               {product.images && product.images.length > 0 ? (
                 <ImageSlider
                   images={product.images.map((image) => ({
-                    src: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${image.formats.medium.url}`,
+                    src: isProduction
+                      ? image.formats.medium.url
+                      : `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${image.formats.medium.url}`,
                     alt: image.formats.medium.name || product.name,
                   }))}
                 />
