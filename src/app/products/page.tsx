@@ -8,17 +8,8 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function Products() {
-  // Log the request time to verify dynamic rendering
-  console.log('Fetching products at:', new Date().toISOString());
-
   const products = await getProducts();
-  console.log('Products fetched:', products);
-  console.log('process.env.NEXT_PUBLIC_STRAPI_API_URL:', process.env.NEXT_PUBLIC_STRAPI_API_URL);
-
-  console.log('process.env.APP_ENV:', process.env.APP_ENV);
-
-  const isProduction = process.env.NODE_ENV === 'production';
-  console.log('isProduction:', isProduction);
+  const isProduction = process.env.NEXT_PUBLIC_APP_ENV === 'production';
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -33,7 +24,7 @@ export default async function Products() {
               {product.images && product.images.length > 0 ? (
                 <ImageSlider
                   images={product.images.map((image) => ({
-                    src: image.formats.medium.url,
+                    src: isProduction ? image.formats.medium.url : `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${image.formats.medium.url}`,
                     alt: product.name,
                   }))}
                 />
