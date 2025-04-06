@@ -36,7 +36,7 @@ export const getProducts = async (): Promise<Product[]> => {
   try {
     // Debug logs
     console.log('Environment Variables:', {
-      NODE_ENV: process.env.NODE_ENV,
+      NODE_ENV: process.env.NEXT_PUBLIC_APP_ENV,
       NEXT_PUBLIC_STRAPI_API_URL: process.env.NEXT_PUBLIC_STRAPI_API_URL,
       // Log all NEXT_PUBLIC_ variables
       ...Object.fromEntries(
