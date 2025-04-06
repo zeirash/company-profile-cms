@@ -52,7 +52,7 @@ export const getProducts = async (): Promise<Product[]> => {
       return response.data.data;
     }
 
-    const response = await axios.get('https://company-profile-cms-backend.onrender.com/api/products?populate=*');
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/products?populate=*`);
     return response.data.data;
   } catch (error) {
     console.error('Error fetching products:', error);

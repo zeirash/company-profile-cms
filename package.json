@@ -6,7 +6,7 @@
     "dev": "next dev",
     "dev:local": "dotenv -e .env.local next dev",
     "dev:production": "dotenv -e .env.production next dev",
-    "build": "next build",
+    "build": "dotenv -e .env.production next build",
     "start": "next start -p $PORT",
     "lint": "next lint"
   },
