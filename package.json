@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "A modern company profile website with CMS capabilities",
   "scripts": {
-    "dev": "next dev",
-    "dev:local": "dotenv -e .env.local next dev",
-    "dev:production": "dotenv -e .env.production next dev",
+    "dev": "dotenv -e .env.local next dev",
+    "dev:prod": "dotenv -e .env next dev",
     "build": "next build",
     "start": "next start -p $PORT",
     "lint": "next lint"

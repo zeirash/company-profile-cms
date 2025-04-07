@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: company-profile-cms
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NEXT_PUBLIC_STRAPI_API_URL
+        value: https://company-profile-cms-backend.onrender.com
+      - key: NEXT_PUBLIC_APP_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    healthCheckPath: /
+    autoDeploy: true
+    plan: free
