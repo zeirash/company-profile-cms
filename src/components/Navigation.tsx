@@ -11,7 +11,7 @@ export default function Navigation() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="text-2xl font-bold text-primary">
-            Company
+            Elegant Houseware
           </Link>
 
           {/* Desktop Navigation */}

@@ -1,5 +1,5 @@
 import { getProducts, getCategories, getProductsByCategory } from '@/lib/api';
-// import Image from 'next/image';
+import { formatCurrency } from '@/lib/utils';
 import ImageSlider from '@/components/ImageSlider';
 import Link from 'next/link';
 import { Metadata } from 'next';
@@ -128,7 +128,9 @@ export default async function Products({ searchParams }: ProductsPageProps) {
               <div className="p-4">
                 <h2 className="text-lg font-semibold mb-2">{product.name}</h2>
                 <p className="text-gray-600 text-sm mb-3 line-clamp-2">{product.description}</p>
-                <p className="text-primary font-bold">Rp {product.price}</p>
+                {product.price && (
+                  <p className="text-primary font-bold">{formatCurrency(Number(product.price))}</p>
+                )}
               </div>
             </div>
           ))}
